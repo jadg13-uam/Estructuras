@@ -59,6 +59,29 @@ namespace Estructuras
             }
         }
 
+        public static void Encolar()
+        {
+            Producto producto = new Producto();
+            Console.WriteLine("Escribe los siguientes datos:");
+            Console.WriteLine("Nombre: ");
+            producto.nombre = Console.ReadLine();
+            Console.WriteLine("Precio: ");
+            producto.precio = Double.Parse(Console.ReadLine());
+            Console.WriteLine("Cantidad: ");
+            producto.cantidad = int.Parse(Console.ReadLine());
+
+            cola.Enqueue(producto);
+
+        }
+
+        public static void Desencolar()
+        {
+            foreach(Producto prod in cola)
+            {
+                Console.Write(prod.nombre + "|");
+            } 
+        }
+
         
         static void Main(string[] args)
         {
