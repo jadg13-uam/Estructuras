@@ -11,6 +11,8 @@ namespace Estructuras
     {
         static Producto[] productos = new Producto[10];
         static int pos = 0;
+        static Stack<Producto> pila = new Stack<Producto>();
+        static Queue<Producto> cola = new Queue<Producto>();
 
         private static void Ingresar()
         {
@@ -34,6 +36,29 @@ namespace Estructuras
             }
         }
 
+        public static void Apilar()
+        {
+            Producto producto = new Producto();
+            Console.WriteLine("Escribe los siguientes datos:");
+            Console.WriteLine("Nombre: ");
+            producto.nombre = Console.ReadLine();
+            Console.WriteLine("Precio: ");
+            producto.precio = Double.Parse(Console.ReadLine());
+            Console.WriteLine("Cantidad: ");
+            producto.cantidad = int.Parse(Console.ReadLine());
+
+            //apilar
+            pila.Push(producto);
+        }
+
+        public static void MostrarPila()
+        {
+            foreach(Producto prod in pila)
+            {
+                Console.Write(prod.nombre + " |");
+            }
+        }
+
         
         static void Main(string[] args)
         {
@@ -42,9 +67,12 @@ namespace Estructuras
             int op = 0;
             while(op != 3)
             {
+                Console.WriteLine();
                 Console.WriteLine("1. Ingresar ");
                 Console.WriteLine("2. Mostrar ");
                 Console.WriteLine("3. Salir ");
+                Console.WriteLine("4. Apilar ");
+                Console.WriteLine("5. Mostrar Pila ");
                 op = int.Parse(Console.ReadLine());
                 switch(op)
                 {
@@ -57,6 +85,13 @@ namespace Estructuras
                     case 3:
                         
                         break;
+                    case 4:
+                        Apilar();
+                        break;
+                    case 5:
+                        MostrarPila();
+                        break;
+
                     default:
                         Console.WriteLine("Opcion invalida");
                         break;
